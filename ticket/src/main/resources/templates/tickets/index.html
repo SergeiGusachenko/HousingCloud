@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Tickets</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+  <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"></script>
+</head>
+<body class="container">
+<h1>All tickets</h1>
+
+<p th:unless="${tickets} and ${tickets.size()}"> No tickets !</p>
+
+<table class="table table-striped">
+  <thread>
+    <tr>
+      <th>Subject</th>
+      <th>Priority</th>
+      <th>Issue Type</th>
+      <th>ID</th>
+      <th>Student</th>
+    </tr>
+  </thread>
+  <ul class="nav">
+    <li class="nav-item"><a class="nav-link" href="/tickets">All tickets</a></li>
+    <li class="nav-item"><a class="nav-link" href="/tickets/create">Create new ticket</a></li>
+    <li class="nav-item"><a class="nav-link" href="/tickets/delete">Delete ticket</a></li>
+<!--    <div class="form-group">-->
+<!--      <select name="sortTicketsByPriority" id="sortTicketsByPriority" class="form-control">-->
+<!--        <option value="ascending">ascending</option>-->
+<!--        <option value="descending">descending</option>-->
+<!--      </select>-->
+<!--      <input type="submit" value="Sort" class="btn btn-success">-->
+<!--    </div>-->
+  </ul>
+
+    <tr th:each="tickets : ${tickets}">
+      <td th:text="${tickets.subject}"></td>
+      <td th:text="${tickets.priority}"></td>
+      <td th:text="${tickets.issueType}"></td>
+      <td th:text="${tickets.id}"></td>
+<!--      <td th:text="${tickets.reportedBy}"></td>-->
+  </tr>
+</table>
+</ul>
+</body>
+</html>

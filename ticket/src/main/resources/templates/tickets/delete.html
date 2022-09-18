@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"></script>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body class="container">
+<h1>Select tickets you want to delete</h1>
+<form method="post">
+        <th:block th:each="tickets:${tickets}">
+            <div class="form-group">
+                <label>
+                    <span th:text="${tickets.subject}"></span>
+                    <span th:text="${tickets.priority}"></span>
+                    <span th:text="${tickets.issueType}"></span>
+                    <span th:text="${tickets.id}"></span>
+<!--                    <span th:text="${tickets.reportedBy}"></span>-->
+                    <input type="checkbox" name="ticketsIds" th:value="${tickets.id}">
+                </label>
+            </div>
+        </th:block>
+    <input type="submit" value="Delete" class="btn btn-danger">
+</form>
+</body>
+</html>

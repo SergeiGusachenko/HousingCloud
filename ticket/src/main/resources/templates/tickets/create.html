@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en " xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset= "UTF-8" />
+    <title>Create Ticket</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"></script>
+</head>
+<body>
+<html>
+<body class="container">
+
+<ul class="nav">
+    <li><a href="/tickets">All tickets</a></li>
+</ul>
+<form action = '/tickets/create' method = 'post' >
+    <h4>Please describe issue in a few words</h4>
+    <div class="form-group">
+        <input type="text" name="subject" class="form-control"><br>
+    </div>
+    <label for="issueType"></label>
+    <div class="form-group">
+        <select name="issueType" id="issueType" class="form-control">
+            <option value="accounting">accounting</option>
+            <option value="maintenance">maintenance</option>
+            <option value="leaks">leaks</option>
+            <option value="utilities">utilities</option>
+        </select>
+    </div>
+    <label for="priority"></label>
+    <div class="form-group">
+        <select name="priority" id="priority" class="form-control">
+            <option value="high">high</option>
+            <option value="medium">medium</option>
+            <option value="low">low</option>
+        </select>
+    </div>
+<!--    <input type="text" name="priority"> priority-->
+    <div class="form-group">
+        <input type="submit" value="Create Ticket" class="btn btn-success">
+    </div>
+</form>
+</body>
+</html>
+</body>
+</html>
