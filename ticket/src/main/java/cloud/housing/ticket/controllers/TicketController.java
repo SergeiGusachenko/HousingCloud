@@ -2,10 +2,14 @@ package cloud.housing.ticket.controllers;
 import cloud.housing.ticket.data.TicketRepository;
 import cloud.housing.ticket.models.Ticket;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
+import java.util.List;
 
 @Controller
 @RequestMapping("tickets")
@@ -45,5 +49,24 @@ public class TicketController {
             ticketRepository.deleteById(id);
         }
         return "redirect:";
+    }
+
+    @GetMapping("/{field}")
+    public String displayAllTicketsWithSorting(Model model, @PathVariable String field){
+        List<Ticket> tickets = this.findAllTicketsWithSorting(field);
+        model.addAttribute("tickets",tickets);
+        return "tickets/index";
+    }
+
+    @GetMapping("/pagination/{offset}/{pageSize}")
+    public String findAllTicketsWithPagination(@PathVariable int offset,@PathVariable int pageSize, Model model){
+        Page<Ticket> page = ticketRepository.findAll(PageRequest.of(offset,pageSize));
+        model.addAttribute("tickets",page);
+        return "tickets/index";
+    }
+
+    //sorting using field
+    public List<Ticket> findAllTicketsWithSorting(String field){
+        return ticketRepository.findAll(Sort.by(Sort.Direction.ASC,field));
     }
 }

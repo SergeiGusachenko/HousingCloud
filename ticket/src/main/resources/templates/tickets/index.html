@@ -9,8 +9,6 @@
 <body class="container">
 <h1>All tickets</h1>
 
-<p th:unless="${tickets} and ${tickets.size()}"> No tickets !</p>
-
 <table class="table table-striped">
   <thread>
     <tr>
@@ -25,6 +23,9 @@
     <li class="nav-item"><a class="nav-link" href="/tickets">All tickets</a></li>
     <li class="nav-item"><a class="nav-link" href="/tickets/create">Create new ticket</a></li>
     <li class="nav-item"><a class="nav-link" href="/tickets/delete">Delete ticket</a></li>
+    <li class="nav-item"><a class="nav-link" href="/tickets/priority">Sort Priority </a></li>
+    <li class="nav-item"><a class="nav-link" href="/tickets/id">Sort id</a></li>
+
 <!--    <div class="form-group">-->
 <!--      <select name="sortTicketsByPriority" id="sortTicketsByPriority" class="form-control">-->
 <!--        <option value="ascending">ascending</option>-->
@@ -34,6 +35,7 @@
 <!--    </div>-->
   </ul>
 
+  </div>
     <tr th:each="tickets : ${tickets}">
       <td th:text="${tickets.subject}"></td>
       <td th:text="${tickets.priority}"></td>
@@ -42,6 +44,15 @@
 <!--      <td th:text="${tickets.reportedBy}"></td>-->
   </tr>
 </table>
+<div class="pagination_section">
+  <a href="#"><< Previous</a>
+  <a href="/tickets/pagination/0/10" title="0-10">1</a>
+  <a href="/tickets/pagination/1/10" title="1-10">2</a>
+  <a href="/tickets/pagination/2/10" title="2-10">3</a>
+  <a href="/tickets/pagination/3/10" title="3-10" class="active">4</a>
+  <a href="/tickets/pagination/4/10" title="4-10">5</a>
+  <a href="#">  Next >></a>
+</div>
 </ul>
 </body>
 </html>
